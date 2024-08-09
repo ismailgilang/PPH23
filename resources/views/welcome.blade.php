@@ -102,7 +102,7 @@
 
         // Start Typewriter Effect
         const typewriterElement = document.getElementById('typewriter');
-        typeWriter(typewriterElement, 'Selamat Datang di Perusahaan Kamii', 2000, function() {
+        typeWriter(typewriterElement, 'Selamat Datang di Perusahaan Software', 2000, function() {
             // Optional callback to perform actions after the typewriter effect is done
         });
     </script>
