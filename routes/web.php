@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\GajiController;
+use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('karyawan', KaryawanController::class);
-    Route::resource('gaji', GajiController::class);
+    Route::resource('pembelian', PembelianController::class);
 });
 
 require __DIR__.'/auth.php';

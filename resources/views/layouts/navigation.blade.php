@@ -18,8 +18,8 @@
                     <x-nav-link :href="route('karyawan.index')" :active="request()->routeIs('karyawan.index')">
                         {{ __('Data Karyawan') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('gaji.index')" :active="request()->routeIs('gaji.index')">
-                        {{ __('Gaji') }}
+                    <x-nav-link :href="route('pembelian.index')" :active="request()->routeIs('pembelian.index')">
+                        {{ __('Pembelian') }}
                     </x-nav-link>
                 </div>
             </div>

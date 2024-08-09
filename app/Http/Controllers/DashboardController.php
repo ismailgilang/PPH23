@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\gaji;
 use App\Models\User;
 use NumberToWords\NumberToWords;
 use TCPDF;
@@ -11,11 +10,8 @@ use TCPDF;
 class DashboardController extends Controller
 {
     public function index(){
-        $totalMutuGaji = gaji::sum('mutu_gaji');
-        $totalPotongan = gaji::sum('thp');
-        $totalHasilPotongan = $totalMutuGaji - $totalPotongan;
         $totalKaryawan = User::where('role', 'karyawan')->count();
-        return view('dashboard', compact('totalMutuGaji', 'totalHasilPotongan', 'totalKaryawan'));
+        return view('dashboard', compact('totalKaryawan'));
     }
 
     public function laporan(){
