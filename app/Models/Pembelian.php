@@ -16,6 +16,8 @@ class Pembelian extends Model
         'harga',
         'hargapph',
         'status',
+        'bukti',
+        'setorpph',
         'created_at',
     ];
 }

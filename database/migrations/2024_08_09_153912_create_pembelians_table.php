@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('harga');
             $table->string('hargapph');
             $table->string('status');
+            $table->string('bukti');
+            $table->string('setorpph');
             $table->timestamps();
         });
     }

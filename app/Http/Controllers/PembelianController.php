@@ -55,7 +55,8 @@ class PembelianController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $transaksi = Pembelian::findOrFail($id);
+        return view('pembelian.showUpload', compact('transaksi'));
     }
 
     /**
@@ -72,9 +73,17 @@ class PembelianController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $path = $request->file('bukti')->store('photos', 'public');
+
+        // Temukan data Pembelian berdasarkan ID
         $data = Pembelian::findOrFail($id);
-        $data->update($request->all());
-        return redirect()->route('pembelian.index');
+
+        // Perbarui semua data yang di-submit, termasuk path dari file yang diunggah
+        $data->update(array_merge($request->all(), ['bukti' => $path]));
+
+        // Redirect ke route pembelian.index setelah update berhasil
+        return redirect()->route('pembelian.index')->with('success', 'Data pembelian berhasil diperbarui.');
+
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Pembelian;
 use NumberToWords\NumberToWords;
 use TCPDF;
 
@@ -11,7 +12,9 @@ class DashboardController extends Controller
 {
     public function index(){
         $totalKaryawan = User::where('role', 'karyawan')->count();
-        return view('dashboard', compact('totalKaryawan'));
+        $totalPajak = Pembelian::sum('hargapph');
+        $totalSetor = Pembelian::where('setorpph', 'done')->sum('hargapph');
+        return view('dashboard', compact('totalKaryawan', 'totalPajak', 'totalSetor'));
     }
 
     public function laporan(){

@@ -21,7 +21,37 @@
                     <x-nav-link :href="route('pembelian.index')" :active="request()->routeIs('pembelian.index')">
                         {{ __('Pembelian') }}
                     </x-nav-link>
+                    <div class="relative space-x-8 mt-4">
+  <!-- Dropdown Toggle -->
+                    <button id="dropdownToggle" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        {{ __('Laporan') }}
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div id="dropdownMenu" class="absolute right-0 w-48 mt-2 origin-top-right bg-black divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                        <div class="p-1">
+                        <x-nav-link :href="route('laporan.index')" :active="request()->routeIs('laporan.index')">
+                            {{ __('Laporan Pajak') }}
+                        </x-nav-link>
+                        </div>
+                        <div class="p-1">
+                        <x-nav-link :href="route('laporan.bulanan')" :active="request()->routeIs('laporan.bulanan')">
+                            {{ __('Laporan Bulanan') }}
+                        </x-nav-link>
+                        </div>
+                        <div class="p-1">
+                        <x-nav-link :href="route('laporan.tahunan')" :active="request()->routeIs('laporan.tahunan')">
+                            {{ __('Laporan Tahunan') }}
+                        </x-nav-link>
+                        </div>
+                    </div>  
                 </div>
+                </div>
+                
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -104,3 +134,19 @@
         </div>
     </div>
 </nav>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('dropdownToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    toggleButton.addEventListener('click', function () {
+      dropdownMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!toggleButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+  });
+</script>
